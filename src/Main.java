@@ -25,5 +25,9 @@ public class Main {
 
         System.out.println("---\nSinh viên có điểm TB cao nhất: " + svGioi.ten);
         System.out.printf("Điểm TB: %.2f%n", svGioi.diemTB);
+
+        System.out.println("\n=== GIẢNG VIÊN ===");
+        GiangVien gv = new GiangVien("Nguyen Van A", 35, "gv.a@fpt.edu.vn", "Lap trinh Java", 25000000);
+        gv.giaoThien();
     }
 }
