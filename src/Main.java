@@ -1,26 +1,29 @@
+import java.util.ArrayList;
+
 public class Main {
-
-    static void tinhTienDien(double kWhTieuThu) {
-        double tongTien = 0;
-
-        if (kWhTieuThu < 50) {
-            tongTien = kWhTieuThu * 1.678;
-        } else if (kWhTieuThu >= 50 && kWhTieuThu <= 100) {
-            tongTien = (50 * 1.678) + ((kWhTieuThu - 50) * 1.734);
-        } else {
-            tongTien = (50 * 1.678) + (50 * 1.734) + ((kWhTieuThu - 100) * 2.014);
-        }
-
-        System.out.println("Số kWh: " + kWhTieuThu);
-        System.out.printf("Tổng tiền phải trả: %.3f%n", tongTien);
-        System.out.println("---");
-    }
-
     public static void main(String[] args) {
-        double[] danhSachKwh = {30, 75, 150, 200, 45};
+        ArrayList<SinhVien> danhSach = new ArrayList<>();
 
-        for (int i = 0; i < danhSachKwh.length; i++) {
-            tinhTienDien(danhSachKwh[i]);
+        danhSach.add(new SinhVien("Nguyen Quang Minh", 19, "SE123456", 8.5));
+        danhSach.add(new SinhVien("Tran Thi An", 20, "SE123457", 7.2));
+        danhSach.add(new SinhVien("Le Van Hung", 19, "SE123458", 6.0));
+        danhSach.add(new SinhVien("Nguyen Son Tung", 20, "SE123459", 9.5));
+
+        System.out.println("=== DANH SÁCH SINH VIÊN ===");
+        for (SinhVien sv : danhSach) {
+            sv.giaoThien();
         }
+
+        System.out.println("Tổng số sinh viên: " + danhSach.size());
+
+        SinhVien svGioi = danhSach.get(0);
+        for (int i = 1; i < danhSach.size(); i++) {
+            if (danhSach.get(i).diemTB > svGioi.diemTB) {
+                svGioi = danhSach.get(i);
+            }
+        }
+
+        System.out.println("---\nSinh viên có điểm TB cao nhất: " + svGioi.ten);
+        System.out.printf("Điểm TB: %.2f%n", svGioi.diemTB);
     }
 }
